@@ -1,8 +1,16 @@
 import { chartTypes } from '../types/chart.types';
 
 const initialState = {
-    values: {},
-    labels: {}
+    values: {
+        labels: [],
+        data: [],
+        color: 'yellow',
+        title: 'placeholder title'
+    },
+    labels: {
+        xAxesLabel: 'placeholder xaxes',
+        yAxesLabel: 'placeholder yaxes'
+    }
 };
 
 export default (state = initialState, { type, payload }) => {

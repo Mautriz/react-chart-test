@@ -6,8 +6,10 @@ import LineChart from '../../components/line-chart/line-chart.component';
 const HomePage = () => {
     return (
         <div>
-            <ChartLabelsForm />
-            <ChartLoadJson />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                <ChartLoadJson />
+                <ChartLabelsForm />
+            </div>
             <LineChart />
         </div>
     );

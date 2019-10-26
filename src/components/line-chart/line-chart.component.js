@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 import { connect } from 'react-redux';
-
+import { generateChartData } from './chartOptions';
 class LineChart extends Component {
     render() {
-        const { values, labels } = this.props.chart;
-        return <Line />;
+        const newChartData = generateChartData(this.props.chart);
+        return <Line {...newChartData} />;
     }
 }
 

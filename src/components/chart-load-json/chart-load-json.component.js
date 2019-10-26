@@ -8,16 +8,19 @@ class ChartLoadJson extends Component {
         chartValues: {}
     };
 
+    // sets state field to parsed value
     handleChange = e => {
         const chartValues = this.parseJsonValidation(e.target.value);
         this.setState({ chartValues });
     };
 
+    // sends the json to redus => the graph
     handleSubmit = e => {
         e.preventDefault();
         this.props.chartUpdateValues(this.state.chartValues);
     };
 
+    // parses json, return empty object if json is invalid
     parseJsonValidation = json => {
         try {
             return JSON.parse(json);
@@ -29,6 +32,15 @@ class ChartLoadJson extends Component {
     render() {
         return (
             <form className="json-form" onSubmit={this.handleSubmit}>
+                <p>
+                    Data shape: values.data must be same length as labels.data
+                </p>
+                <pre>{`values: {
+        labels: string[],
+        data: number[],
+        color: string,
+        title: string
+    } `}</pre>
                 <textarea
                     className="json-form__textarea"
                     onChange={this.handleChange}
