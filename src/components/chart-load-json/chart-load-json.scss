@@ -1,6 +1,8 @@
 .json-form {
+    padding: 15px;
     &__textarea {
         resize: none;
         height: 30vh;
+        width: 100%;
     }
 }
