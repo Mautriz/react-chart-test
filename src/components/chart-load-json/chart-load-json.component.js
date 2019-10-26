@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { chartUpdateValues } from '../../redux/actions/chart.actions';
+import './chart-load-json.scss';
 
 class ChartLoadJson extends Component {
     state = {
@@ -27,12 +28,15 @@ class ChartLoadJson extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="json-form" onSubmit={this.handleSubmit}>
                 <textarea
+                    className="json-form__textarea"
                     onChange={this.handleChange}
                     name="jsonData"
                 ></textarea>
-                <button type="submit">LOAD JSON</button>
+                <button className="json-form__button" type="submit">
+                    LOAD JSON
+                </button>
             </form>
         );
     }
