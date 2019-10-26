@@ -1,13 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import HomePage from './pages/homepage/homepage.component';
+import NotFoundPage from './pages/not-found/not-found.component';
 
-function App({ chart }) {
-    console.log(chart);
-    return <div className="App">Test</div>;
+function App() {
+    return (
+        <div>
+            <Switch>
+                <Route exact path="/">
+                    <HomePage />
+                </Route>
+
+                <Route path="/">
+                    <NotFoundPage />
+                </Route>
+            </Switch>
+        </div>
+    );
 }
 
-const mapStateToProps = ({ chart }) => ({
-    chart
-});
-
-export default connect(mapStateToProps)(App);
+export default App;
