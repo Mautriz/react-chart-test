@@ -1,4 +1,4 @@
 export const chartTypes = {
-    UPDATE_VALUES: '[chart] UPDATE_VALUES',
-    UPDATE_LABELS: '[chart] UPDATE_LABELS'
+    UPDATE_AXES_FIELDS: '[chart] UPDATE_AXES_FIELDS',
+    UPDATE_CHART_DATA: '[chart] UPDATE_CHART_DATA'
 };

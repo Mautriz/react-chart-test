@@ -1,24 +1,31 @@
 import { chartTypes } from '../types/chart.types';
-
+import { validateJsonEntry } from './validateJsonEntry';
 const initialState = {
-    values: {
-        labels: [],
-        data: [],
-        color: 'yellow',
-        title: 'placeholder title'
+    axesFields: {
+        xAxesField: '',
+        yAxesField: ''
     },
-    labels: {
-        xAxesLabel: 'placeholder xaxes',
-        yAxesLabel: 'placeholder yaxes'
+    chartData: {
+        data: [],
+        labels: []
     }
 };
-
 export default (state = initialState, { type, payload }) => {
     switch (type) {
-        case chartTypes.UPDATE_LABELS:
-            return { ...state, labels: { ...state.labels, ...payload } };
-        case chartTypes.UPDATE_VALUES:
-            return { ...state, values: { ...state.values, ...payload } };
+        case chartTypes.UPDATE_AXES_FIELDS:
+            return { ...state, axesFields: payload };
+        case chartTypes.UPDATE_CHART_DATA:
+            const chartData = validateJsonEntry(
+                payload.jsonData,
+                state.axesFields
+            );
+            if (!chartData) {
+                return {
+                    ...state,
+                    error: 'Json invalido'
+                };
+            }
+            return { ...state, chartData, error: null };
         default:
             return state;
     }

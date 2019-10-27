@@ -1,9 +1,11 @@
-import { authTypes } from '../types/auth.types';
+import { chartTypes } from '../types/chart.types';
 
-export const authLogin = () => ({
-    type: authTypes.LOGIN
+export const chartUpdateAxesFields = payload => ({
+    type: chartTypes.UPDATE_AXES_FIELDS,
+    payload
 });
 
-export const authLogout = () => ({
-    type: authTypes.LOGOUT
+export const chartUpdateChartData = payload => ({
+    type: chartTypes.UPDATE_CHART_DATA,
+    payload
 });

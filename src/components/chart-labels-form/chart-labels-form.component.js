@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { chartUpdateLabels } from '../../redux/actions/chart.actions';
+import { chartUpdateAxesFields } from '../../redux/actions/auth.actions';
 
 // Normalmente per i form userei una libreria (Formik), uso vanilla per far vedere che so come funziona
 class ChartLabelsForm extends Component {
@@ -36,9 +36,9 @@ class ChartLabelsForm extends Component {
     handleSubmit = e => {
         const { xAxesLabel, yAxesLabel } = this.state;
         e.preventDefault();
-        this.props.chartUpdateLabels({
-            xAxesLabel,
-            yAxesLabel
+        this.props.chartUpdateAxesFields({
+            xAxesField: xAxesLabel,
+            yAxesField: yAxesLabel
         });
     };
 
@@ -107,5 +107,5 @@ class ChartLabelsForm extends Component {
 
 export default connect(
     null,
-    { chartUpdateLabels }
+    { chartUpdateAxesFields }
 )(ChartLabelsForm);
