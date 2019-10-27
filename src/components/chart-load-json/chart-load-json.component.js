@@ -33,7 +33,8 @@ class ChartLoadJson extends Component {
         return (
             <form className="json-form" onSubmit={this.handleSubmit}>
                 {/* Esempio formattato */}
-                <pre>{`Inserisci un array JSON con tutti oggetti con almeno 2 campi uguali, questi campi devono essere scelti nei selettori a destra
+                <pre>{`Inserisci un array JSON con tutti oggetti con almeno 2 campi uguali, 
+                questi campi devono essere scelti nei selettori a destra
                 ex: AsseX: "marco", AsseY: "penna"
                 [{"marco": "Gennaio", "penna":12},
                 {"marco": "Febbraio", "penna":7},{"marco": "Marzo", "penna":18}]
