@@ -1,5 +1,5 @@
 import { chartTypes } from '../types/chart.types';
-import { validateJsonEntry } from './validateJsonEntry';
+import { validateJsonEntry } from '../utils/validateJsonEntry';
 const initialState = {
     axesFields: {
         xAxesField: '',

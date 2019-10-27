@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { chartUpdateValues } from '../../redux/actions/chart.actions';
+import { chartUpdateChartData } from '../../redux/actions/chart.actions';
 import './chart-load-json.scss';
 
 class ChartLoadJson extends Component {
@@ -17,7 +17,7 @@ class ChartLoadJson extends Component {
     // sends the json to redus => the graph
     handleSubmit = e => {
         e.preventDefault();
-        this.props.chartUpdateValues(this.state.chartValues);
+        this.props.chartUpdateChartData(this.state.chartValues);
     };
 
     // parses json, return empty object if json is invalid
@@ -56,5 +56,5 @@ class ChartLoadJson extends Component {
 
 export default connect(
     null,
-    { chartUpdateValues }
+    { chartUpdateChartData }
 )(ChartLoadJson);

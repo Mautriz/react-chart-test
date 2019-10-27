@@ -1,11 +1,11 @@
 import { chartTypes } from '../types/chart.types';
 
-export const chartUpdateValues = payload => ({
-    type: chartTypes.UPDATE_VALUES,
+export const chartUpdateAxesFields = payload => ({
+    type: chartTypes.UPDATE_AXES_FIELDS,
     payload
 });
 
-export const chartUpdateLabels = payload => ({
-    type: chartTypes.UPDATE_LABELS,
+export const chartUpdateChartData = payload => ({
+    type: chartTypes.UPDATE_CHART_DATA,
     payload
 });

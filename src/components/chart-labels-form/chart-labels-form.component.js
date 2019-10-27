@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { chartUpdateAxesFields } from '../../redux/actions/auth.actions';
+import { chartUpdateAxesFields } from '../../redux/actions/chart.actions';
 
 // Normalmente per i form userei una libreria (Formik), uso vanilla per far vedere che so come funziona
 class ChartLabelsForm extends Component {
