@@ -11,12 +11,15 @@ class ChartLoadJson extends Component {
     // sets state field to parsed value
     handleChange = e => {
         const chartValues = this.parseJsonValidation(e.target.value);
-        this.setState({ chartValues });
+        this.setState({ chartValues }, () =>
+            console.log(this.state.chartValues)
+        );
     };
 
     // sends the json to redus => the graph
     handleSubmit = e => {
         e.preventDefault();
+        console.log(this.state.chartValues);
         this.props.chartUpdateChartData(this.state.chartValues);
     };
 

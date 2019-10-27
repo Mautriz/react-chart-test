@@ -1,13 +1,14 @@
 export const validateJsonEntry = (json, axesFields) => {
     if (!axesFields) return null;
     const { xAxesField, yAxesField } = axesFields;
+
     try {
-        const parsedJson = JSON.parse(json);
         let newChartData = {
             data: [],
             labels: []
         };
-        for (const item of parsedJson) {
+        console.log(json);
+        for (const item of json) {
             if (
                 !item[xAxesField] ||
                 !item[yAxesField] ||
@@ -17,6 +18,7 @@ export const validateJsonEntry = (json, axesFields) => {
             }
             newChartData.labels.push(item[xAxesField]);
             newChartData.data.push(+item[yAxesField]);
+            console.log(newChartData);
         }
         return newChartData;
     } catch (e) {

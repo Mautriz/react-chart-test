@@ -15,10 +15,7 @@ export default (state = initialState, { type, payload }) => {
         case chartTypes.UPDATE_AXES_FIELDS:
             return { ...state, axesFields: payload };
         case chartTypes.UPDATE_CHART_DATA:
-            const chartData = validateJsonEntry(
-                payload.jsonData,
-                state.axesFields
-            );
+            const chartData = validateJsonEntry(payload, state.axesFields);
             if (!chartData) {
                 return {
                     ...state,

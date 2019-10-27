@@ -82,7 +82,7 @@ class ChartLabelsForm extends Component {
                     )}
                 </div>
                 <div style={{ flex: 1 }}>
-                    <label htmlFor="xAxesLabel">xAxes</label>
+                    <label htmlFor="yAxesLabel">yAxes</label>
                     <input
                         style={{ width: '100%' }}
                         value={this.state.yAxesLabel}
