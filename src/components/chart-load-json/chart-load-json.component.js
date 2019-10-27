@@ -32,15 +32,12 @@ class ChartLoadJson extends Component {
     render() {
         return (
             <form className="json-form" onSubmit={this.handleSubmit}>
-                <p>
-                    Data shape: values.data must be same length as labels.data
-                </p>
-                <pre>{`values: {
-        labels: string[],
-        data: number[],
-        color: string,
-        title: string
-    } `}</pre>
+                {/* Esempio formattato */}
+                <pre>{`Inserisci un array JSON con tutti oggetti con almeno 2 campi uguali, questi campi devono essere scelti nei selettori a destra
+                ex: AsseX: "marco", AsseY: "penna"
+                [{"marco": "Gennaio", "penna":12},
+                {"marco": "Febbraio", "penna":7},{"marco": "Marzo", "penna":18}]
+                `}</pre>
                 <textarea
                     className="json-form__textarea"
                     onChange={this.handleChange}

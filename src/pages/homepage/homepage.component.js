@@ -6,6 +6,7 @@ import { authLogout } from '../../redux/actions/auth.actions';
 import { connect } from 'react-redux';
 
 const HomePage = ({ authLogout }) => {
+    // le pagine hanno il ruolo di mostrare altri componenti sulla pagina, non dovrebbero avere logica particolarmente complessa
     return (
         <div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>

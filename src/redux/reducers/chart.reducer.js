@@ -15,6 +15,8 @@ export default (state = initialState, { type, payload }) => {
         case chartTypes.UPDATE_AXES_FIELDS:
             return { ...state, axesFields: payload };
         case chartTypes.UPDATE_CHART_DATA:
+            // il lavoro del reducer è quello di prendere dati e aggiornare lo stato globale,
+            // operazioni "importanti" vanno in altri file per avere un codice clean ed esplicativo
             const chartData = validateJsonEntry(payload, state.axesFields);
             if (!chartData) {
                 return {

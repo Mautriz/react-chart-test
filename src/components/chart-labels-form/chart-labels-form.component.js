@@ -17,7 +17,11 @@ class ChartLabelsForm extends Component {
 
     // changes corresponding input state and validates the field
     handleChange = e => {
+        // target.name = tag name="" nel jsx
         const controlName = e.target.name;
+
+        // per il controllo viene usato un callback perché l'aggiornamento di stato in react è asincrono
+        // metterlo in una linea successiva (non in callback) avrebbe potuto causare errori dovuti a questo tipo di aggiornamento
         this.setState({ [controlName]: e.target.value }, () => {
             this.isFieldValid(controlName);
         });
@@ -26,6 +30,8 @@ class ChartLabelsForm extends Component {
     // marks field as touched
     handleBlur = e => {
         const controlName = e.target.name;
+        // I nomi nello stato devono avere la prima parte in comune per poter fare questo
+        // prende il field in base al nome dato all'input attraverso tag (name="") + Touched alla fine
         const statePiece = `${controlName}Touched`;
         this.setState({ [statePiece]: true }, () => {
             this.isFieldValid(controlName);
@@ -35,11 +41,15 @@ class ChartLabelsForm extends Component {
     // submits form only if its valid
     handleSubmit = e => {
         const { xAxesLabel, yAxesLabel } = this.state;
+        // La pagina non ricarica
         e.preventDefault();
+        // Il reducer aggiorna i selettori attuali
         this.props.chartUpdateAxesFields({
             xAxesField: xAxesLabel,
             yAxesField: yAxesLabel
         });
+        // "resetta" la form mandando i valori (con doppio binding) a 0
+        this.setState({ xAxesLabel: '', yAxesLabel: '' });
     };
 
     // checks if single form value is valid
@@ -65,7 +75,7 @@ class ChartLabelsForm extends Component {
                 }}
             >
                 <div style={{ flex: 1 }}>
-                    <label htmlFor="xAxesLabel">xAxes</label>
+                    <label htmlFor="xAxesLabel">Selettore Asse X</label>
                     <input
                         style={{ width: '100%' }}
                         value={this.state.xAxesLabel}
@@ -82,7 +92,7 @@ class ChartLabelsForm extends Component {
                     )}
                 </div>
                 <div style={{ flex: 1 }}>
-                    <label htmlFor="yAxesLabel">yAxes</label>
+                    <label htmlFor="yAxesLabel">Selettore Asse Y</label>
                     <input
                         style={{ width: '100%' }}
                         value={this.state.yAxesLabel}

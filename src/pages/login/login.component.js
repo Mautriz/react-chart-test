@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const LoginPage = ({ authLogin, history }) => {
+    // simula richiesta al server con 300ms di ritardo
     const login = () => {
         authLogin();
         setTimeout(() => {
@@ -17,7 +18,7 @@ const LoginPage = ({ authLogin, history }) => {
         </div>
     );
 };
-
+// withRouter da accesso al router e a tutte le sue funzioni
 export default withRouter(
     connect(
         null,
