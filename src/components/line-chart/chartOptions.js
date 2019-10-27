@@ -1,12 +1,12 @@
-export const generateChartData = ({ values, labels }) => {
+export const generateChartData = ({ data, labels }) => {
     return {
         data: {
-            labels: values.labels ? values.labels : [],
+            labels: labels ? labels : [],
             datasets: [
                 {
-                    data: values.data ? values.data : [],
-                    backgroundColor: values.color ? values.color : 'yellow',
-                    label: values.title ? values.title : 'titolo non pervenuto',
+                    data: data ? data : [],
+                    backgroundColor: 'yellow',
+                    label: 'titolo non pervenuto',
                     borderWidth: 1
                 }
             ]
@@ -17,9 +17,7 @@ export const generateChartData = ({ values, labels }) => {
                     {
                         scaleLabel: {
                             display: true,
-                            labelString: labels.yAxesLabel
-                                ? labels.yAxesLabel
-                                : 'placeholder yAxes',
+                            labelString: 'Label X!',
                             fontSize: 20
                         },
                         ticks: {
@@ -31,9 +29,7 @@ export const generateChartData = ({ values, labels }) => {
                     {
                         scaleLabel: {
                             display: true,
-                            labelString: labels.xAxesLabel
-                                ? labels.xAxesLabel
-                                : 'placeholder xAxes',
+                            labelString: 'Label Y',
                             fontSize: 20
                         }
                     }
