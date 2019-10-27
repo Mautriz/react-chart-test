@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { generateChartData } from './chartOptions';
 class LineChart extends Component {
     render() {
-        const newChartData = generateChartData(this.props.chart);
+        const newChartData = generateChartData(this.props.chart.chartData);
         return <Line {...newChartData} />;
     }
 }
