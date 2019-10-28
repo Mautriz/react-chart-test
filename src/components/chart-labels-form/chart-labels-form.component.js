@@ -17,6 +17,7 @@ class ChartLabelsForm extends Component {
 
     // changes corresponding input state and validates the field
     handleChange = e => {
+        const { xAxesLabel, yAxesLabel } = this.state;
         // target.name = tag name="" nel jsx
         const controlName = e.target.name;
 
@@ -24,6 +25,10 @@ class ChartLabelsForm extends Component {
         // metterlo in una linea successiva (non in callback) avrebbe potuto causare errori dovuti a questo tipo di aggiornamento
         this.setState({ [controlName]: e.target.value }, () => {
             this.isFieldValid(controlName);
+            this.props.setFormField('selectors', {
+                xAxesField: xAxesLabel,
+                yAxesField: yAxesLabel
+            });
         });
     };
 

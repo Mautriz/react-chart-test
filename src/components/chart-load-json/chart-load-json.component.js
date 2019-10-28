@@ -4,21 +4,21 @@ import { chartUpdateChartData } from '../../redux/actions/chart.actions';
 import './chart-load-json.scss';
 
 class ChartLoadJson extends Component {
-    state = {
-        chartValues: {}
-    };
+    // state = {
+    //     chartValues: {}
+    // };
 
     // sets state field to parsed value
     handleChange = e => {
         const chartValues = this.parseJsonValidation(e.target.value);
-        this.setState({ chartValues });
+        this.props.setFormField({ chartValues });
     };
 
     // sends the json to redus => the graph
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.chartUpdateChartData(this.state.chartValues);
-    };
+    // handleSubmit = e => {
+    //     e.preventDefault();
+    //     this.props.chartUpdateChartData(this.state.chartValues);
+    // };
 
     // parses json, return empty object if json is invalid
     parseJsonValidation = json => {
@@ -31,7 +31,7 @@ class ChartLoadJson extends Component {
 
     render() {
         return (
-            <form className="json-form" onSubmit={this.handleSubmit}>
+            <div className="json-form">
                 {/* Esempio formattato */}
                 <pre>{`Inserisci un array JSON con tutti oggetti con almeno 2 campi uguali, 
                 questi campi devono essere scelti nei selettori a destra
@@ -44,10 +44,10 @@ class ChartLoadJson extends Component {
                     onChange={this.handleChange}
                     name="jsonData"
                 ></textarea>
-                <button className="json-form__button" type="submit">
+                {/* <button className="json-form__button" type="submit">
                     LOAD JSON
-                </button>
-            </form>
+                </button> */}
+            </div>
         );
     }
 }
