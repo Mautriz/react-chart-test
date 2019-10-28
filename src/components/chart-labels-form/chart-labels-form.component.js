@@ -13,11 +13,27 @@ class ChartLabelsForm extends Component {
         yAxesLabelTouched: false
     };
 
+    // resetta gli input a '' su submit
+    componentDidMount() {
+        window.addEventListener('submit', this.resetInputs);
+    }
+
+    // rimozione event listeners
+    componentWillUnmount() {
+        window.removeEventListener('submit', this.resetInputs);
+    }
+
+    resetInputs = () => {
+        this.setState({
+            xAxesLabel: '',
+            yAxesLabel: ''
+        });
+    };
+
     errorMessage = 'This field is required';
 
     // changes corresponding input state and validates the field
     handleChange = e => {
-        const { xAxesLabel, yAxesLabel } = this.state;
         // target.name = tag name="" nel jsx
         const controlName = e.target.name;
 
@@ -26,8 +42,8 @@ class ChartLabelsForm extends Component {
         this.setState({ [controlName]: e.target.value }, () => {
             this.isFieldValid(controlName);
             this.props.setFormField('selectors', {
-                xAxesField: xAxesLabel,
-                yAxesField: yAxesLabel
+                xAxesField: this.state.xAxesLabel,
+                yAxesField: this.state.yAxesLabel
             });
         });
     };
@@ -44,18 +60,18 @@ class ChartLabelsForm extends Component {
     };
 
     // submits form only if its valid
-    handleSubmit = e => {
-        const { xAxesLabel, yAxesLabel } = this.state;
-        // La pagina non ricarica
-        e.preventDefault();
-        // Il reducer aggiorna i selettori attuali
-        this.props.chartUpdateAxesFields({
-            xAxesField: xAxesLabel,
-            yAxesField: yAxesLabel
-        });
-        // "resetta" la form mandando i valori (con doppio binding) a 0
-        this.setState({ xAxesLabel: '', yAxesLabel: '' });
-    };
+    // handleSubmit = e => {
+    //     const { xAxesLabel, yAxesLabel } = this.state;
+    //     // La pagina non ricarica
+    //     e.preventDefault();
+    //     // Il reducer aggiorna i selettori attuali
+    //     this.props.chartUpdateAxesFields({
+    //         xAxesField: xAxesLabel,
+    //         yAxesField: yAxesLabel
+    //     });
+    //     // "resetta" la form mandando i valori (con doppio binding) a 0
+    //     this.setState({ xAxesLabel: '', yAxesLabel: '' });
+    // };
 
     // checks if single form value is valid
     isFieldValid = field => {
@@ -67,7 +83,7 @@ class ChartLabelsForm extends Component {
         this.setState({ [`${field}Error`]: false });
     };
 
-    isFormValid = () => this.state.xAxesLabel && this.state.yAxesLabel;
+    // isFormValid = () => this.state.xAxesLabel && this.state.yAxesLabel;
 
     render() {
         return (
