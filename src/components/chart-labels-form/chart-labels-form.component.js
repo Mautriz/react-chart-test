@@ -4,59 +4,61 @@ import { chartUpdateAxesFields } from '../../redux/actions/chart.actions';
 
 // Normalmente per i form userei una libreria (Formik), uso vanilla per far vedere che so come funziona
 class ChartLabelsForm extends Component {
-    state = {
-        xAxesLabel: '',
-        yAxesLabel: '',
-        xAxesLabelError: false,
-        yAxesLabelError: false,
-        xAxesLabelTouched: false,
-        yAxesLabelTouched: false
-    };
+    // state = {
+    //     xAxesLabel: '',
+    //     yAxesLabel: '',
+    //     xAxesLabelError: false,
+    //     yAxesLabelError: false,
+    //     xAxesLabelTouched: false,
+    //     yAxesLabelTouched: false
+    // };
 
     // resetta gli input a '' su submit
-    componentDidMount() {
-        window.addEventListener('submit', this.resetInputs);
-    }
+    // componentDidMount() {
+    //     window.addEventListener('submit', this.resetInputs);
+    // }
 
     // rimozione event listeners
-    componentWillUnmount() {
-        window.removeEventListener('submit', this.resetInputs);
-    }
+    // componentWillUnmount() {
+    //     window.removeEventListener('submit', this.resetInputs);
+    // }
 
-    resetInputs = () => {
-        this.setState({
-            xAxesLabel: '',
-            yAxesLabel: ''
-        });
-    };
+    // resetInputs = () => {
+    //     this.setState({
+    //         xAxesLabel: '',
+    //         yAxesLabel: ''
+    //     });
+    // };
 
     errorMessage = 'This field is required';
 
     // changes corresponding input state and validates the field
     handleChange = e => {
         // target.name = tag name="" nel jsx
-        const controlName = e.target.name;
 
         // per il controllo viene usato un callback perché l'aggiornamento di stato in react è asincrono
         // metterlo in una linea successiva (non in callback) avrebbe potuto causare errori dovuti a questo tipo di aggiornamento
-        this.setState({ [controlName]: e.target.value }, () => {
-            this.isFieldValid(controlName);
-            this.props.setFormField('selectors', {
-                xAxesField: this.state.xAxesLabel,
-                yAxesField: this.state.yAxesLabel
-            });
-        });
+        // this.setState({ [controlName]: e.target.value }, () => {
+        //     this.isFieldValid(controlName);
+        //     this.props.setFormField('selectors', {
+        //         xAxesField: this.state.xAxesLabel,
+        //         yAxesField: this.state.yAxesLabel
+        //     });
+        // });
+        this.props.setFormField('selectors', e.target.value, e.target.name);
     };
 
     // marks field as touched
     handleBlur = e => {
-        const controlName = e.target.name;
+        // const controlName = e.target.name;
         // I nomi nello stato devono avere la prima parte in comune per poter fare questo
         // prende il field in base al nome dato all'input attraverso tag (name="") + Touched alla fine
-        const statePiece = `${controlName}Touched`;
-        this.setState({ [statePiece]: true }, () => {
-            this.isFieldValid(controlName);
-        });
+        // const statePiece = `${controlName}Touched`;
+        // this.setState({ [statePiece]: true }, () => {
+        //     this.isFieldValid(controlName);
+        // });
+
+        this.props.handleBlur('selectors', e.target.name);
     };
 
     // submits form only if its valid
@@ -74,14 +76,14 @@ class ChartLabelsForm extends Component {
     // };
 
     // checks if single form value is valid
-    isFieldValid = field => {
-        if (!this.state[field] && this.state[`${field}Touched`]) {
-            return this.setState({
-                [`${field}Error`]: true
-            });
-        }
-        this.setState({ [`${field}Error`]: false });
-    };
+    // isFieldValid = field => {
+    //     if (!this.state[field] && this.state[`${field}Touched`]) {
+    //         return this.setState({
+    //             [`${field}Error`]: true
+    //         });
+    //     }
+    //     this.setState({ [`${field}Error`]: false });
+    // };
 
     // isFormValid = () => this.state.xAxesLabel && this.state.yAxesLabel;
 
@@ -96,33 +98,33 @@ class ChartLabelsForm extends Component {
                 }}
             >
                 <div style={{ flex: 1 }}>
-                    <label htmlFor="xAxesLabel">Selettore Asse X</label>
+                    <label htmlFor="xAxesField">Selettore Asse X</label>
                     <input
                         style={{ width: '100%' }}
-                        value={this.state.xAxesLabel}
+                        value={this.props.xAxesField}
                         type="text"
-                        name="xAxesLabel"
+                        name="xAxesField"
                         onChange={this.handleChange}
                         onBlur={this.handleBlur}
                     ></input>
 
-                    {this.state.xAxesLabelError && (
+                    {this.props.xAxesFieldError && (
                         <p style={{ color: 'red' }}>
                             xAxes è un field richiesto
                         </p>
                     )}
                 </div>
                 <div style={{ flex: 1 }}>
-                    <label htmlFor="yAxesLabel">Selettore Asse Y</label>
+                    <label htmlFor="yAxesField">Selettore Asse Y</label>
                     <input
                         style={{ width: '100%' }}
-                        value={this.state.yAxesLabel}
+                        value={this.props.yAxesField}
                         type="text"
-                        name="yAxesLabel"
+                        name="yAxesField"
                         onChange={this.handleChange}
                         onBlur={this.handleBlur}
                     ></input>
-                    {this.state.yAxesLabelError && (
+                    {this.props.yAxesFieldError && (
                         <p style={{ color: 'red' }}>
                             yAxes è un field richiesto
                         </p>

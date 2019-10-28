@@ -3,7 +3,6 @@ export const validateJsonEntry = (json, axesFields) => {
     // I nomi degli assi sono necessari
     if (!axesFields) return null;
     const { xAxesField, yAxesField } = axesFields;
-
     try {
         // E' best practice rimpiazzare sempre l'oggetto iniziale e non cambiarlo direttamente
         let newChartData = {
