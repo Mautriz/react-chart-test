@@ -33,7 +33,7 @@ export default (state = initialState, { type, payload }) => {
             if (!newChartData) {
                 return {
                     ...state,
-                    error: 'Json invalido'
+                    error: 'Errore, ricontrolla i dati inseriti'
                 };
             }
             return { ...state, chartData: newChartData, error: null };

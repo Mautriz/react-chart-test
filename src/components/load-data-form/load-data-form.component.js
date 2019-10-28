@@ -118,12 +118,18 @@ class LoadDataForm extends Component {
                 >
                     LOAD DATA
                 </button>
+                <p style={{ color: 'red', margin: 'auto' }}>
+                    {this.props.chart.error && this.props.chart.error}
+                </p>
             </form>
         );
     }
 }
 
+const mapStateToProps = ({ chart }) => ({
+    chart
+});
 export default connect(
-    null,
+    mapStateToProps,
     { /* chartUpdateAxesFields, chartUpdateChartData */ chartUpdateChart }
 )(LoadDataForm);
