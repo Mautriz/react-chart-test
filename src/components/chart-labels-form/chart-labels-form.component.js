@@ -71,8 +71,8 @@ class ChartLabelsForm extends Component {
 
     render() {
         return (
-            <form
-                onSubmit={this.handleSubmit}
+            <div
+                // onSubmit={this.handleSubmit}
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -112,10 +112,10 @@ class ChartLabelsForm extends Component {
                         </p>
                     )}
                 </div>
-                <button disabled={!this.isFormValid()} type="submit">
+                {/* <button disabled={!this.isFormValid()} type="submit">
                     SET LABELS
-                </button>
-            </form>
+                </button> */}
+            </div>
         );
     }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ChartLoadJson from '../chart-load-json/chart-load-json.component';
-import ChartLabelsForm from '../chart-labels-form';
+import ChartLabelsForm from '../chart-labels-form/chart-labels-form.component';
 
 class LoadDataForm extends Component {
     state = {
@@ -22,10 +22,15 @@ class LoadDataForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form
+                onSubmit={this.handleSubmit}
+                style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+            >
                 <ChartLoadJson setFormField={this.setFormField} />
                 <ChartLabelsForm setFormField={this.setFormField} />
-                <button type="submit">LOAD DATA</button>
+                <button style={{ gridColumn: '1 / 3' }} type="submit">
+                    LOAD DATA
+                </button>
             </form>
         );
     }

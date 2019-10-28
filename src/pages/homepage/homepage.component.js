@@ -2,13 +2,13 @@ import React from 'react';
 import LineChart from '../../components/line-chart/line-chart.component';
 import { authLogout } from '../../redux/actions/auth.actions';
 import { connect } from 'react-redux';
-import loadDataFormComponent from '../../components/load-data-form/load-data-form.component';
+import LoadDataForm from '../../components/load-data-form/load-data-form.component';
 
 const HomePage = ({ authLogout }) => {
     // le pagine hanno il ruolo di mostrare altri componenti sulla pagina, non dovrebbero avere logica particolarmente complessa
     return (
         <div>
-            <loadDataFormComponent />
+            <LoadDataForm />
             {/* <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                 <ChartLoadJson />
                 <ChartLabelsForm />

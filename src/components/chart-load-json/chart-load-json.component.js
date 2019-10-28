@@ -11,7 +11,7 @@ class ChartLoadJson extends Component {
     // sets state field to parsed value
     handleChange = e => {
         const chartValues = this.parseJsonValidation(e.target.value);
-        this.props.setFormField({ chartValues });
+        this.props.setFormField('chartValues', chartValues);
     };
 
     // sends the json to redus => the graph
